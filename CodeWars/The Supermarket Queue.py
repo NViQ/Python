@@ -1,24 +1,28 @@
-def queue_time(arr):
+def queue_time(cust, n):
+    if len(cust) == 0:
+        return 0
+    elif n > len(cust):
+        return max(cust)
+    elif n == 1:
+        return sum(cust)
+    elif len(cust) > n:
+        l = []
+        for i in cust[:n]:
+            l.append(i)
+        for m in cust[n:]:
+            l.sort()
+            b = list(map(lambda x: x + m, l))
+            l[0] = min(b)
+        return max(l)
 
-    print(sorted(set(arr))[-2])
 
-    # if len(cust) == 0:
-    #     return 0
-    # elif n > len(cust):
-    #     return max(cust)
-    # elif n == 1:
-    #     return sum(cust)
-    # elif len(cust) > n:
-    #     b = 0
-    #     l = []
-    #     # while b < n:
-    #     for i in range(0,n):
-    #
-    #     l.append(sum(cust[b::n]))
-    #     b += 1
-    #     print(max(l))
+# def queue_time(customers, n):
+#     l=[0]*n
+#     for i in customers:
+#         l[l.index(min(l))]+=i
+#     return max(l)
 
-queue_time([1, 2, 5, 7, 9, 9])
+
 # queue_time([26, 2, 2, 3, 8, 31, 3, 45, 48, 43], 3)#: 81 should equal 79
 # queue_time([27, 19, 33, 5, 42, 46, 26, 32, 15, 21, 29, 40, 1, 13, 7, 27, 26, 16, 34], 5)#: 129 should equal 108
 # queue_time([], 1)#, 0, "wrong answer for case with an empty queue")

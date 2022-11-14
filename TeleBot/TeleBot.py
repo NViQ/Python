@@ -9,7 +9,7 @@ bot = telebot.TeleBot('5428334254:AAEmoEX1qzCFjGYJwVeEaPukOAH5aSbV_ew')
 @bot.message_handler(commands=['start'])
 
 def start(message):
-    mess = f' Привет <b><u>{message.from_user.first_name} {message.from_user.last_name}</u></b>'
+    mess = f' Привет <b><u> {message.from_user.first_name} {message.from_user.last_name}</u></b>'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
